@@ -5,6 +5,4 @@ mult = (num) -> num%3==0 or num%5==0
 
 sum = (range) -> [1...range].filter(mult).reduce (t, s) ->  t+s
 
-console.log(sum 1000)
-
-
+console.log sum 1000
