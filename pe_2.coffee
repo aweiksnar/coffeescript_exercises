@@ -2,21 +2,49 @@
 # 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 # By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
-fib = (num) ->
-  switch num
-    when 0 then 0
-    when 1 then 1
-    else (fib num-1) + (fib num-2)
+# as a class
 
-even = (num) -> num%2 == 0
+class FibSum
+  constructor: (@range) ->
 
-fibSum = (range) ->
-  num = 0
-  fibSeq = []
-  while fib(num) < range
-    fibNum = fib(num)
-    fibSeq.push fibNum if even fibNum
-    num += 1
-  fibSeq.reduce (t,s) -> t+s
+  fib: (num) ->
+    switch num
+      when 0 then 0
+      when 1 then 1
+      else (@fib num-1) + (@fib num-2)
 
-console.log fibSum 4000000
+  even: (num) -> num%2 == 0
+
+  fibSum: ->
+    num = 0
+    fibSeq = []
+    while @fib(num) < @range
+      fibNum = @fib(num)
+      fibSeq.push fibNum if @even fibNum
+      num += 1
+    fibSeq.reduce (t,s) -> t+s
+
+answer = new FibSum(4000000).fibSum()
+console.log answer #=> 4613732
+
+# without a class:
+
+# fib = (num) ->
+#   switch num
+#     when 0 then 0
+#     when 1 then 1
+#     else (fib num-1) + (fib num-2)
+
+# even = (num) -> num%2 == 0
+
+# fibSum = (range) ->
+#   num = 0
+#   fibSeq = []
+#   while fib(num) < range
+#     fibNum = fib(num)
+#     fibSeq.push fibNum if even fibNum
+#     num += 1
+#   fibSeq.reduce (t,s) -> t+s
+
+# console.log fibSum 4000000
+
