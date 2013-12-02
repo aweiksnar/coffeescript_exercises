@@ -2,16 +2,16 @@
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
 # initialize with range and array
-pal_array = []
+palArray = []
 
 reverseArray = (array) ->
-  new_ary = []
-  new_ary.push(item) for item in array
-  new_ary.reverse()
+  newAry = []
+  newAry.push(item) for item in array
+  newAry.reverse()
 
 for num in [100..999]
   for i in [100..999]
     mult = (num * i).toString().split("")
-    pal_array.push(+mult.join("")) if mult.join("") == reverseArray(mult).join("")
+    palArray.push(+mult.join("")) if mult.join("") == reverseArray(mult).join("")
 
-console.log(Math.max pal_array...)
+console.log(Math.max palArray...)
