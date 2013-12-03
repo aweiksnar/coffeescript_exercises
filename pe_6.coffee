@@ -7,13 +7,13 @@
 
 class SumSquareDifference
   constructor: (@range) ->
-  sumOfSquares: ->
-    @range.reduce (t, s) -> t + (s*s)
-  squareOfSums: ->
-    Math.pow((@range.reduce (t, s) -> t + s), 2)
-  difference: ->
-    @squareOfSums() - @sumOfSquares()
 
-answer = new SumSquareDifference([1..10])
+  sumOfSquares: -> @range.reduce (t, s) -> t + (s*s)
+
+  squareOfSums: -> Math.pow((@range.reduce (t, s) -> t + s), 2)
+
+  difference: -> @squareOfSums() - @sumOfSquares()
+
+answer = new SumSquareDifference([1..100])
 console.log(answer.difference()) #=> 2640
 
